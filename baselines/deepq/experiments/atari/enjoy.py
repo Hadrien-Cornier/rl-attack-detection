@@ -3,7 +3,10 @@ import gym
 import os
 import numpy as np
 
-from gym.monitoring import VideoRecorder
+#from gym.monitoring import VideoRecorder
+import sys
+sys.path.append("~/rl-attack-detection")
+from baselines.monitoring import VideoRecorder
 
 import baselines.common.tf_util as U
 
