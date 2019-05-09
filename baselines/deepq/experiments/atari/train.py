@@ -24,7 +24,7 @@ from baselines.common.schedules import LinearSchedule, PiecewiseSchedule
 # when updating this to non-deperecated ones, it is important to
 # copy over LazyFrames
 from baselines.common.atari_wrappers_deprecated import wrap_dqn
-from baselines.common.azure_utils import Container
+#from baselines.common.azure_utils import Container
 from .model import model, dueling_model
 
 
@@ -106,17 +106,19 @@ if __name__ == '__main__':
     args = parse_args()
     # Parse savedir and azure container.
     savedir = args.save_dir
-    if args.save_azure_container is not None:
-        account_name, account_key, container_name = args.save_azure_container.split(":")
-        container = Container(account_name=account_name,
-                              account_key=account_key,
-                              container_name=container_name,
-                              maybe_create=True)
-        if savedir is None:
-            # Careful! This will not get cleaned up. Docker spoils the developers.
-            savedir = tempfile.TemporaryDirectory().name
-    else:
-        container = None
+    #REMOVED AZURE
+#    if args.save_azure_container is not None:
+#        account_name, account_key, container_name = args.save_azure_container.split(":")
+#        container = Container(account_name=account_name,
+#                              account_key=account_key,
+#                              container_name=container_name,
+#                              maybe_create=True)
+#        if savedir is None:
+#            # Careful! This will not get cleaned up. Docker spoils the developers.
+#            savedir = tempfile.TemporaryDirectory().name
+#    else:
+#        container = None
+    container=None
     # Create and seed the env.
     env, monitored_env = make_env(args.env)
     if args.seed > 0:
