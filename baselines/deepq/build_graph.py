@@ -127,6 +127,7 @@ def build_act(make_obs_ph, q_func, num_actions, attack=None, scope="deepq", reus
 
         # Load model before attacks graph construction so that TF won't
         # complain can't load parameters for attack
+        print("model_path : ", model_path)
         U.load_state(model_path)
 
         if attack != None:
