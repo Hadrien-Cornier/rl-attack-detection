@@ -169,6 +169,8 @@ if __name__ == '__main__':
         while True:
             num_iters += 1
             # Take action and store transition in the replay buffer.
+            print("act : \n")
+            print(act(np.array(obs)[None], update_eps=exploration.value(num_iters)))
             action = act(np.array(obs)[None], update_eps=exploration.value(num_iters))[0]
             new_obs, rew, done, info = env.step(action)
             replay_buffer.add(obs, action, rew, new_obs, float(done))
